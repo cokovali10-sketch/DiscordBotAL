@@ -1,0 +1,14 @@
+{
+  "token": "YOUR_BOT_TOKEN",
+  "guildId": "0",
+  "ownerId": "0",
+  "database": {
+    "url": "jdbc:sqlite:bot.db"
+  },
+  "logging": {
+    "channelId": "0"
+  },
+  "moderation": {
+    "logChannelId": "0"
+  }
+}

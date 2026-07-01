@@ -1,0 +1,23 @@
+# Gradle
+.gradle/
+build/
+out/
+gradle-8.10.2/
+bin/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Runtime
+*.log
+*.db
+*.sqlite
+*.sqlite3
+config.local.json
+bot.db
+
+# OS
+.DS_Store
+Thumbs.db
