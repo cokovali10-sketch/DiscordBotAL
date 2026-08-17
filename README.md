@@ -1,52 +1,75 @@
-# Discord Bot AL
+<div align="center">
 
-A polished Java 21 Discord bot project built with JDA, Gradle Kotlin DSL, SQLite, Jackson, SLF4J, and Logback.
+# 🎮 Discord Bot AL
 
-## Features
+**Modern Java Discord bot** — economy, levels, tickets, moderation & music in one extensible framework
 
-- Slash commands
-- Economy and daily rewards
-- XP and level system
-- Ticket workflow
-- Moderation helpers
-- Welcome and logging service foundations
-- SQLite-backed persistence
+![Java](https://img.shields.io/badge/Java-21-E76F00?style=flat-square&logo=java)
+![JDA](https://img.shields.io/badge/JDA-5.x-5865F2?style=flat-square&logo=discord)
+![Gradle](https://img.shields.io/badge/Gradle-8.x-02303A?style=flat-square&logo=gradle)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite)
+![Tests](https://img.shields.io/badge/tests-%E2%9C%93%20passing-brightgreen?style=flat-square)
 
-## Tech Stack
+</div>
 
-- Java 21
-- Gradle Kotlin DSL
-- JDA 5
-- SQLite
-- Jackson
-- SLF4J + Logback
-- JUnit 5 + Mockito
+## ✨ Features
 
-## Quick Start
+| Module | What it does |
+|---|---|
+| 💰 **Economy** | Balance, daily rewards, configurable currency commands |
+| 📈 **Levels & XP** | Per-message XP, role-progression levels, `!level` leaderboard |
+| 🎫 **Tickets** | Full ticket workflow (open / claim / close) with repositories |
+| 🛡️ **Moderation** | Moderation cases, workflows, action logging |
+| 🎵 **Music** | Music service for voice channels |
+| 👋 **Welcome** | Custom join/leave greeting service |
+| ⚙️ **Config** | Centralized bot configuration with cooldowns |
+| 🔌 **Events** | Event publisher + registrar, clean listener architecture |
 
-1. Install Java 21.
-2. Clone the repository.
-3. Update [src/main/resources/config.json](src/main/resources/config.json) with your bot token and guild settings.
-4. Run:
-   - `./gradlew test`
-   - `./gradlew run`
-5. Invite the bot to your server with the required permissions.
+## 🧱 Architecture
 
-## Project Structure
+```
+bot/
+├── commands/       # SlashCommand interface + CommandRegistry + impls
+├── config/         # BotConfig (token, settings)
+├── database/       # DatabaseManager
+├── economy/        # EconomyService
+├── events/         # BotEvent, GuildEventPublisher
+├── levels/         # LevelService, XPService
+├── listeners/      # EventListenerRegistrar + core listeners
+├── logging/        # ActionLogger
+├── models/         # ModerationCase, Ticket
+├── moderation/     # ModerationService
+├── music/          # MusicService
+├── repositories/   # SQLite repositories (moderation, tickets)
+├── services/       # lifecycle, cooldown, workflows
+├── tickets/        # TicketService
+└── welcome/        # WelcomeService
+```
 
-- `bot.commands` — slash commands
-- `bot.listeners` — event listeners
-- `bot.moderation` — moderation helpers
-- `bot.tickets` — ticket workflow
-- `bot.economy` — economy system
-- `bot.levels` — XP and levels
-- `bot.logging` — action logging
-- `bot.database` — SQLite bootstrap
+Clean separation of concerns: **commands → services → repositories → SQLite**, easy to extend with new slash commands.
 
-## Contributing
+## 🚀 Getting Started
 
-Contributions are welcome. Please open an issue or pull request with a clear summary.
+```bash
+git clone https://github.com/cokovali10-sketch/DiscordBotAL
+cd DiscordBotAL
+./gradlew build      # compile + run tests
+```
 
-## License
+Configure your token in `src/main/java/bot/config/BotConfig.java` (or via env), then:
 
-MIT
+```bash
+./gradlew run
+```
+
+## ✅ Tests
+
+Unit tests cover the core services:
+- `EconomyServiceTest` — economy logic
+- `ModerationServiceTest` — moderation workflow
+- `TicketServiceTest` — ticket lifecycle
+- `CooldownServiceTest` — cooldown enforcement
+
+---
+
+<div align="center"><i>Beautiful, scalable, and ready for production servers.</i></div>
